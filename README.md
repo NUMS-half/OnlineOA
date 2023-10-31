@@ -19,6 +19,7 @@ This system also develops an administrator background for the staff of the acade
 Login
 ![image](https://github.com/NUMS-half/OnlineOA/assets/99391471/f6e12456-0b45-4a03-a2f6-45cf463472e6)
 
+
 ### Student Side
 Course Apply
 ![image](https://github.com/NUMS-half/OnlineOA/assets/99391471/fb3a0493-3b78-44c1-92dc-25d112a1082f)
@@ -26,11 +27,12 @@ Course Apply
 
 ### Teacher Side
 Application Approve
+![image](https://github.com/NUMS-half/OnlineOA/assets/99391471/11bca0f2-5c25-4f1d-8f7e-af155722e0e7)
 
 
 ### Admin Side
 Admin Homepage
-
 ![image](https://github.com/NUMS-half/OnlineOA/assets/99391471/5b65500a-48db-4beb-ab8b-282db2fae0e7)
+
 
 ## Getting Start
