@@ -14,7 +14,7 @@ This system also develops an administrator background for the staff of the acade
 - Web Server：Apache Tomcat 9.0.45
 - Dependency Manage：Apache Maven 3.9.1
 
-## File Tree
+## File Dictionary Tree
 ```bash
 ├─src
 │  ├─main
