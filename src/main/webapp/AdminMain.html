@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>在线课程OA系统后台管理</title>
+
+    <script>
+        function user_mana() {
+            window.location.href = "userList";
+        }
+        function course_mana() {
+            window.location.href = "courseList?type=admin";
+        }
+        function applyHistory() {
+            window.location.href = "applyHistory?uid=adminRequest";
+        }
+        function approveFlow() {
+            window.location.href = "flowList";
+        }
+        function logout() {
+            const flag = confirm("确定退出当前帐号吗？");
+            if (flag) window.location.href = "logout";
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-image: url("imgs/background.jpg");
+            background-size: 1920px 1080px;
+            padding: 100px;
+        }
+        .container {
+            width: 450px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.65);
+            padding: 20px;
+            border-radius: 18px;
+            transition: 0.5s;
+        }
+        .container:hover {
+            background-color: rgba(252, 250, 250, 0.94);
+        }
+
+        .btn {
+            border: 2px solid transparent;
+            background: yellowgreen;
+            color: black;
+            font-size: 16px;
+            line-height: 25px;
+            padding: 10px 0;
+            text-decoration: none;
+            text-shadow: none;
+            border-radius: 15px;
+            box-shadow: none;
+            transition: 0.25s;
+            display: block;
+            width: 250px;
+            margin: 0 auto;
+        }
+        .btn:hover {
+            background-color: lightgreen;
+        }
+
+        .btn-logout {
+            border: 2px solid transparent;
+            background: #777777;
+            color: white;
+            font-size: 16px;
+            line-height: 25px;
+            padding: 10px 0;
+            text-decoration: none;
+            text-shadow: none;
+            border-radius: 15px;
+            box-shadow: none;
+            transition: 0.25s;
+            display: block;
+            width: 250px;
+            margin-bottom: 20px;
+        }
+        .btn-logout:hover {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+<div align="center" class="container">
+    <h1 style="color: #098ef3">在线课程申请审批系统</h1>
+    <h2>系统后台管理</h2>
+    <input type="button" class="btn" value="系统用户管理" onclick="user_mana()">
+    <br/>
+    <input type="button" class="btn" value="可申请课程管理" onclick="course_mana()">
+    <br/>
+    <input type="button" class="btn" value="审批记录查询" onclick="applyHistory()">
+    <br/>
+    <input type="button" class="btn" value="审批流设置" onclick="approveFlow()">
+    <br/>
+    <input type="button" class="btn-logout" value="退出登录" onclick="logout()">
+</div>
+</body>
+</html>

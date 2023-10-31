@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.neu.onlineoa.mapper.ApplyDao">
+
+    <resultMap id="applyResultMap" type="cn.edu.neu.onlineoa.bean.Apply">
+        <id property="aid" column="aid" />
+        <result property="status" column="status" />
+        <result property="studentId" column="studentId" />
+        <result property="studentName" column="studentName" />
+        <result property="courseId" column="courseId" />
+        <result property="courseName" column="courseName" />
+        <result property="applyReason" column="applyReason" />
+        <result property="reasonFilePath" column="reasonFilePath"/>         <!--table:apply_log-->
+        <result property="applyTime" column="applyTime"/>                   <!--table:apply_log-->
+        <result property="firstTeacherId" column="firstTeacherId" />        <!--table:approval_flow-->
+        <result property="firstApproveTeaId" column="firstApproveTeaId"/>   <!--table:apply_log-->
+        <result property="firstApproveTime" column="firstApproveTime"/>     <!--table:apply_log-->
+        <result property="secondTeacherId" column="secondTeacherId" />      <!--table:approval_flow-->
+        <result property="secondApproveTeaId" column="secondApproveTeaId"/> <!--table:apply_log-->
+        <result property="secondApproveTime" column="secondApproveTime"/>   <!--table:apply_log-->
+        <result property="rejectReason" column="rejectReason" />
+        <result property="confirm" column="confirm" />
+    </resultMap>
+
+    <select id="findConfirmedApplyWithMultiCondition" resultMap="applyResultMap" parameterType="cn.edu.neu.onlineoa.bean.Apply">
+        SELECT a.aid, status, studentId, studentName, courseId, courseName, applyReason, firstApproveTeaId, secondApproveTeaId, rejectReason, confirm
+        FROM apply a JOIN apply_log al ON a.aid = al.aid
+        <where>
+            AND studentId = #{studentId} AND confirm = 1
+            <if test="apply != null">
+                <if test="apply.aid != -1 and apply.aid != 0">
+                    AND a.aid = #{apply.aid}
+                </if>
+                <if test="apply.status != -1">
+                    AND status = #{apply.status}
+                </if>
+                <if test="apply.courseId != '' and apply.courseId != null">
+                    AND courseId like CONCAT('%', #{apply.courseId}, '%')
+                </if>
+            </if>
+        </where>
+    </select>
+
+    <select id="findApplyWithMultiCondition" resultMap="applyResultMap" parameterType="cn.edu.neu.onlineoa.bean.Apply">
+        SELECT aid, status, studentId, studentName, courseId, courseName, applyReason, firstTeacherId, secondTeacherId, rejectReason, confirm
+        FROM apply JOIN approval_flow ON courseId = cid
+        <where>
+            <if test="teacherId1 != null">
+                AND firstTeacherId = #{teacherId1}
+            </if>
+            <if test="teacherId2 != null">
+                AND secondTeacherId = #{teacherId2}
+            </if>
+            <if test="apply.aid != -1 and apply.aid != 0">
+                AND aid = #{apply.aid}
+            </if>
+            <if test="apply.status != -1">
+                AND status = #{apply.status}
+            </if>
+            <if test="apply.studentId != null and apply.studentId != ''">
+                AND studentId like CONCAT('%', #{apply.studentId}, '%')
+            </if>
+            <if test="apply.studentName != null and apply.studentName != ''">
+                AND studentName like CONCAT('%', #{apply.studentName}, '%')
+            </if>
+            <if test="apply.courseId != null and apply.courseId != ''">
+                AND courseId like CONCAT('%', #{apply.courseId}, '%')
+            </if>
+            <if test="apply.courseName != null and apply.courseName != ''">
+                AND courseName like CONCAT('%', #{apply.courseName}, '%')
+            </if>
+        </where>
+    </select>
+
+    <select id="findApplyHistory" resultMap="applyResultMap" parameterType="cn.edu.neu.onlineoa.bean.Apply">
+        SELECT a.aid, status, studentId, studentName, courseId, courseName, applyReason, firstApproveTeaId, secondApproveTeaId, rejectReason, confirm
+        FROM apply a JOIN apply_log al ON a.aid = al.aid
+        <where>
+            <if test="identity == 2 and uid != null">
+                AND firstApproveTeaId = #{uid} AND status >= 2
+            </if>
+            <if test="identity == 3 and uid != null">
+                AND secondApproveTeaId = #{uid} and status >= 3
+            </if>
+            <if test="apply != null">
+                <if test="apply.aid != -1 and apply.aid != 0">
+                    AND a.aid = #{apply.aid}
+                </if>
+                <if test="apply.status != -1">
+                    AND status = #{apply.status}
+                </if>
+                <if test="apply.studentId != null and apply.studentId != ''">
+                    AND studentId like CONCAT('%', #{apply.studentId}, '%')
+                </if>
+                <if test="apply.studentName != null and apply.studentName != ''">
+                    AND studentName like CONCAT('%', #{apply.studentName}, '%')
+                </if>
+                <if test="apply.courseId != null and apply.courseId != ''">
+                    AND courseId like CONCAT('%', #{apply.courseId}, '%')
+                </if>
+            </if>
+        </where>
+    </select>
+</mapper>

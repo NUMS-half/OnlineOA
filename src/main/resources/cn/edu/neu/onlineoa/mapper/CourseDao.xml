@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.neu.onlineoa.mapper.CourseDao">
+
+    <resultMap id="courseResultMap" type="cn.edu.neu.onlineoa.bean.Course">
+        <id property="cid" column="cid"/>
+        <result property="cname" column="cname"/>
+        <result property="credit" column="credit"/>
+        <result property="teacherId" column="teacherId"/>
+        <result property="teacherName" column="teacherName"/>
+        <result property="takeTime" column="takeTime"/>
+        <result property="note" column="note"/>
+    </resultMap>
+
+    <select id="findCourseWithMultiCondition" resultMap="courseResultMap"
+            parameterType="cn.edu.neu.onlineoa.bean.Course">
+        SELECT * FROM course
+        <where>
+            <if test="cid != ''">
+                AND cid like '%${cid}%'
+            </if>
+            <if test="cname != ''">
+                AND cname like '%${cname}%'
+            </if>
+            <if test="credit != -1 and credit != -2">
+                AND credit = #{credit}
+            </if>
+            <if test="teacherId != ''">
+                AND teacherId like '%${teacherId}%'
+            </if>
+            <if test="teacherName != ''">
+                AND teacherName like '%${teacherName}%'
+            </if>
+            <if test="takeTime != ''">
+                AND takeTime like '%${takeTime}%'
+            </if>
+            <if test="note != ''">
+                AND note like '%${note}%'
+            </if>
+        </where>
+    </select>
+</mapper>
