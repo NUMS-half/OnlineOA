@@ -14,6 +14,36 @@ This system also develops an administrator background for the staff of the acade
 - Web Server：Apache Tomcat 9.0.45
 - Dependency Manage：Apache Maven 3.9.1
 
+## File Tree
+```bash
+├─src
+│  ├─main
+│  │  ├─java
+│  │  │  └─cn
+│  │  │      └─edu
+│  │  │          └─neu
+│  │  │              └─onlineoa
+│  │  │                  ├─bean
+│  │  │                  ├─controller
+│  │  │                  ├─filter
+│  │  │                  ├─mapper
+│  │  │                  ├─service
+│  │  │                  └─utils
+│  │  ├─resources
+│  │  │  └─cn
+│  │  │      └─edu
+│  │  │          └─neu
+│  │  │              └─onlineoa
+│  │  │                  └─mapper
+│  │  └─webapp
+│  │      ├─imgs
+│  │      └─WEB-INF
+│  └─test
+│      ├─java
+│      │  └─test
+│      └─resources
+```
+
 ## Preview
 ### General
 Login
