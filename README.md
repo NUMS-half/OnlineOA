@@ -43,7 +43,7 @@ User Manage
 ![image](https://github.com/NUMS-half/OnlineOA/assets/99391471/de0f27a6-aa12-44bb-be1c-03402f6095f9)
 
 
-## Getting Start
+## Getting Started
 ### Environment preparation
 - JDK: 1.8.0
 - MySQL: 8.0.32
@@ -66,3 +66,6 @@ Access the application:
 ```
 http://localhost:8080/OnlineOA_war_exploded
 ```
+
+## ©️ Copyright and License
+This project is licensed under the MIT-License.
