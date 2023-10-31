@@ -38,5 +38,31 @@ Admin Homepage
 
 ![image](https://github.com/NUMS-half/OnlineOA/assets/99391471/5b65500a-48db-4beb-ab8b-282db2fae0e7)
 
+User Manage
+
+![image](https://github.com/NUMS-half/OnlineOA/assets/99391471/de0f27a6-aa12-44bb-be1c-03402f6095f9)
+
 
 ## Getting Start
+### Environment preparation
+- JDK: 1.8.0
+- MySQL: 8.0.32
+- Tomcat Server: 9.0.45
+
+### Install
+Download the war file in the release and run it on your machine.
+Deploy the WAR package to Tomcat：
+1. Navigate to Tomcat's webapps directory, usually under the Tomcat installation directory.
+2. Copy the WAR package to the webapps directory.
+3. Tomcat will automatically extract the WAR file and deploy the application.
+Start Tomcat:
+
+Start the Tomcat server：
+```
+../tomcat/bin/startup.sh
+```
+
+Access the application:
+```
+http://localhost:8080/OnlineOA_war_exploded
+```
